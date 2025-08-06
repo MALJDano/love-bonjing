@@ -53,9 +53,18 @@ const randomIndex = Math.floor(Math.random() * funnyTexts.length);
 noBtn.textContent = funnyTexts[randomIndex];
 }
 
-// EVENT LISTENERS (add these!)
+// Desktop hover
 noBtn.addEventListener("mouseover", moveNoButton);
+
+// Mobile touchstart (first touch)
 noBtn.addEventListener("touchstart", function (e) {
+  e.preventDefault(); // Prevents the tap from registering as a click
+  setTimeout(moveNoButton, 10); // Delay helps avoid tap-to-click
+});
+
+// Mobile touchmove (if they try to chase it)
+noBtn.addEventListener("touchmove", function (e) {
   e.preventDefault();
   moveNoButton();
 });
+
