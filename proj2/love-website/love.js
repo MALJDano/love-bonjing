@@ -49,6 +49,13 @@ function moveNoButton() {
   noBtn.style.left = `${newX}px`;
   noBtn.style.top = `${newY}px`;
 
-  const randomIndex = Math.floor(Math.random() * funnyTexts.length);
-  noBtn.textContent = funnyTexts[randomIndex];
+const randomIndex = Math.floor(Math.random() * funnyTexts.length);
+noBtn.textContent = funnyTexts[randomIndex];
 }
+
+// EVENT LISTENERS (add these!)
+noBtn.addEventListener("mouseover", moveNoButton);
+noBtn.addEventListener("touchstart", function (e) {
+  e.preventDefault();
+  moveNoButton();
+});
