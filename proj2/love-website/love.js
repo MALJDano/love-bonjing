@@ -6,12 +6,12 @@ const funnyTexts = [
   "Oh bat mo ako pipindutin?",
   "Baket no?",
   "Aba pipindutin mo?",
-  "Wag ka ganyan beh 😭",
+  "Wag ka ganyan oy 😭",
   "Di pwede!",
-  "Seryoso ka??? 😠",
+  "Seryoso ka??? 😾",
   "Hala siya!",
   "Awts, nasaktan ako 🥺",
-  "Try mo pa 😂",
+  "Try mo pa 😾",
   "No is not an option 😎"
 ];
 
@@ -22,7 +22,7 @@ yesBtn.addEventListener("click", () => {
   noBtn.style.display = "none";
 
   // Optional: update the Yes button text
-  yesBtn.textContent = "Aww I love you too 💖";
+  yesBtn.textContent = "Aww I love you more! 💖";
 });
 
 noBtn.addEventListener("mouseover", () => {
