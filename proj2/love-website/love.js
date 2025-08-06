@@ -6,14 +6,14 @@ const subtitleText = document.getElementById("subtitleText");
 
 const funnyTexts = [
   "Oh bat mo ako pipindutin?",
-  "Baket no?",
+  "Baket no?🤨",
   "Aba pipindutin mo?",
   "Wag ka ganyan beh 😭",
   "Di pwede!",
-  "Seryoso ka??? 😠",
+  "Seryoso ka??? 😾",
   "Hala siya!",
   "Awts, nasaktan ako 🥺",
-  "Try mo pa 😂",
+  "Try mo pa 😾",
   "No is not an option 😎"
 ];
 
@@ -27,18 +27,37 @@ yesBtn.addEventListener("click", () => {
   subtitleText.classList.add("hidden");
 });
 
-noBtn.addEventListener("mouseover", () => {
-  const safeMargin = 100;
-  const maxX = window.innerWidth - noBtn.offsetWidth - safeMargin;
-  const maxY = window.innerHeight - noBtn.offsetHeight - safeMargin;
+function moveNoButton() {
+  const safeMargin = 20;
+  const buttonHeight = noBtn.offsetHeight;
+  const buttonWidth = noBtn.offsetWidth;
 
-  const newX = Math.floor(Math.random() * maxX);
-  const newY = Math.floor(Math.random() * maxY);
+  // Prevent overlap with diary content (if visible)
+  let maxY = window.innerHeight - buttonHeight - safeMargin;
+
+  if (!diaryPage.classList.contains("hidden")) {
+    const diaryTop = diaryPage.getBoundingClientRect().top;
+    maxY = diaryTop - buttonHeight - safeMargin;
+  }
+
+  const maxX = window.innerWidth - buttonWidth - safeMargin;
+
+  const boundedX = Math.max(0, Math.floor(Math.random() * maxX));
+  const boundedY = Math.max(0, Math.floor(Math.random() * maxY));
 
   noBtn.style.position = "absolute";
-  noBtn.style.left = `${newX}px`;
-  noBtn.style.top = `${newY}px`;
+  noBtn.style.left = `${boundedX}px`;
+  noBtn.style.top = `${boundedY}px`;
 
   const randomIndex = Math.floor(Math.random() * funnyTexts.length);
   noBtn.textContent = funnyTexts[randomIndex];
+}
+
+// mouse hover event
+noBtn.addEventListener("mouseover", moveNoButton);
+
+// mobile tap event
+noBtn.addEventListener("touchstart", function (e) {
+  e.preventDefault();
+  moveNoButton();
 });
