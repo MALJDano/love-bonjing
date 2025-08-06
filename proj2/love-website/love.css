@@ -27,6 +27,14 @@ body {
   margin: 30px 0;
 }
 
+#YesBtn {
+  z-index: 5;
+}
+
+#noBtn {
+  z-index: 3;
+}
+
 button {
   background-color: #ffb6c1;
   border: none;
@@ -39,6 +47,7 @@ button {
   position: relative;
   z-index: 2;
 }
+
 
 button:hover {
   background-color: #ff69b4;

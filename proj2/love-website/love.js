@@ -32,32 +32,23 @@ function moveNoButton() {
   const buttonHeight = noBtn.offsetHeight;
   const buttonWidth = noBtn.offsetWidth;
 
-  // Prevent overlap with diary content (if visible)
-  let maxY = window.innerHeight - buttonHeight - safeMargin;
+  const buttonsTop = document.querySelector('.buttons').getBoundingClientRect().top;
+  const buttonsHeight = document.querySelector('.buttons').offsetHeight;
+  const diaryTop = diaryPage.classList.contains("hidden")
+    ? window.innerHeight
+    : diaryPage.getBoundingClientRect().top;
 
-  if (!diaryPage.classList.contains("hidden")) {
-    const diaryTop = diaryPage.getBoundingClientRect().top;
-    maxY = diaryTop - buttonHeight - safeMargin;
-  }
+  // Max Y: somewhere above the buttons
+  const maxY = Math.max(0, buttonsTop - buttonHeight - safeMargin);
+  const maxX = Math.max(0, window.innerWidth - buttonWidth - safeMargin);
 
-  const maxX = window.innerWidth - buttonWidth - safeMargin;
-
-  const boundedX = Math.max(0, Math.floor(Math.random() * maxX));
-  const boundedY = Math.max(0, Math.floor(Math.random() * maxY));
+  const newX = Math.floor(Math.random() * maxX);
+  const newY = Math.floor(Math.random() * maxY);
 
   noBtn.style.position = "absolute";
-  noBtn.style.left = `${boundedX}px`;
-  noBtn.style.top = `${boundedY}px`;
+  noBtn.style.left = `${newX}px`;
+  noBtn.style.top = `${newY}px`;
 
   const randomIndex = Math.floor(Math.random() * funnyTexts.length);
   noBtn.textContent = funnyTexts[randomIndex];
 }
-
-// mouse hover event
-noBtn.addEventListener("mouseover", moveNoButton);
-
-// mobile tap event
-noBtn.addEventListener("touchstart", function (e) {
-  e.preventDefault();
-  moveNoButton();
-});
