@@ -17,20 +17,20 @@ const funnyTexts = [
 
 yesBtn.addEventListener("click", () => {
   diaryPage.classList.remove("hidden");
-
-  // HIDE the No button when Yes is clicked
   noBtn.style.display = "none";
-
-  // Optional: update the Yes button text
-  yesBtn.textContent = "Aww I love you more! 💖";
+  yesBtn.textContent = "Aww I love you more 💖";
 });
 
 noBtn.addEventListener("mouseover", () => {
-  const bodyWidth = window.innerWidth - noBtn.offsetWidth;
-  const bodyHeight = window.innerHeight - noBtn.offsetHeight;
+  const noBtnRect = noBtn.getBoundingClientRect();
+  const containerRect = document.querySelector('.container').getBoundingClientRect();
 
-  const newX = Math.floor(Math.random() * bodyWidth);
-  const newY = Math.floor(Math.random() * bodyHeight);
+  // Calculate safe area to avoid overlapping diary section
+  const maxX = window.innerWidth - noBtn.offsetWidth;
+  const maxY = window.innerHeight - noBtn.offsetHeight - 150; // keep it away from diary
+
+  const newX = Math.floor(Math.random() * maxX);
+  const newY = Math.floor(Math.random() * maxY);
 
   noBtn.style.position = "absolute";
   noBtn.style.left = `${newX}px`;
@@ -40,4 +40,3 @@ noBtn.addEventListener("mouseover", () => {
   const randomIndex = Math.floor(Math.random() * funnyTexts.length);
   noBtn.textContent = funnyTexts[randomIndex];
 });
-

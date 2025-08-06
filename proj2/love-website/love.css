@@ -1,3 +1,4 @@
+/* Base styles */
 body {
   background: #fff0f5;
   font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -9,6 +10,7 @@ body {
 
 .container {
   margin-top: 15vh;
+  padding: 0 20px;
 }
 
 .title {
@@ -35,6 +37,7 @@ button {
   margin: 10px;
   transition: all 0.3s ease;
   position: relative;
+  z-index: 2;
 }
 
 button:hover {
@@ -48,7 +51,7 @@ button:hover {
   border: 3px dotted #ff69b4;
   border-radius: 20px;
   max-width: 600px;
-  margin: 30px auto;
+  margin: 50px auto 30px;
   text-align: left;
   box-shadow: 0 0 15px #ffb6c1;
 }
@@ -65,22 +68,20 @@ button:hover {
   font-size: 1.8rem;
   color: #ff1493;
   margin-bottom: 20px;
-  font-family: 'Comic Sans MS', cursive;
 }
 
 .diary-message {
   font-size: 1rem;
   color: #444;
   line-height: 1.6;
-  font-family: 'Comic Sans MS', cursive;
   text-align: justify;
 }
-
 
 .hidden {
   display: none;
 }
 
+/* Responsive styles */
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -101,7 +102,6 @@ button:hover {
 
   .subtitle {
     font-size: 1.2rem;
-    padding: 0 10px;
   }
 
   button {
@@ -128,4 +128,3 @@ button:hover {
     margin-bottom: 15px;
   }
 }
-
