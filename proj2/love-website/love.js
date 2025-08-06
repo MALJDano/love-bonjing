@@ -17,6 +17,12 @@ const funnyTexts = [
 
 yesBtn.addEventListener("click", () => {
   diaryPage.classList.remove("hidden");
+
+  // HIDE the No button when Yes is clicked
+  noBtn.style.display = "none";
+
+  // Optional: update the Yes button text
+  yesBtn.textContent = "Aww I love you too 💖";
 });
 
 noBtn.addEventListener("mouseover", () => {
@@ -34,3 +40,4 @@ noBtn.addEventListener("mouseover", () => {
   const randomIndex = Math.floor(Math.random() * funnyTexts.length);
   noBtn.textContent = funnyTexts[randomIndex];
 });
+
