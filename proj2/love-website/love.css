@@ -2,15 +2,19 @@
 body {
   background: #fff0f5;
   font-family: 'Comic Sans MS', cursive, sans-serif;
-  text-align: center;
   color: #ff1493;
   margin: 0;
   padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-  margin-top: 15vh;
-  padding: 0 20px;
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
 }
 
 .title {
@@ -88,14 +92,6 @@ button:hover {
 }
 
 @media (max-width: 600px) {
-  body {
-    padding: 10px;
-  }
-
-  .container {
-    margin-top: 10vh;
-  }
-
   .title {
     font-size: 2rem;
   }
