@@ -17,15 +17,28 @@ const funnyTexts = [
   "No is not an option 😎"
 ];
 
-yesBtn.addEventListener("click", () => {
-  diaryPage.classList.remove("hidden");
-  noBtn.style.display = "none";
-  yesBtn.textContent = "Aww I love you more 💖";
+let isLoveShown = false;
 
-  // Hide greeting texts
-  titleText.classList.add("hidden");
-  subtitleText.classList.add("hidden");
+yesBtn.addEventListener("click", () => {
+  if (!isLoveShown) {
+    // 💖 Show love diary
+    diaryPage.classList.remove("hidden");
+    noBtn.style.display = "none";
+    yesBtn.textContent = "Aww I love you more 💖";
+    titleText.classList.add("hidden");
+    subtitleText.classList.add("hidden");
+    isLoveShown = true;
+  } else {
+    // 🔁 Revert to original state
+    diaryPage.classList.add("hidden");
+    noBtn.style.display = "inline-block";
+    yesBtn.innerHTML = "of course <br> my bebi";
+    titleText.classList.remove("hidden");
+    subtitleText.classList.remove("hidden");
+    isLoveShown = false;
+  }
 });
+
 
 function moveNoButton() {
   const safeMargin = 20;
@@ -38,7 +51,6 @@ function moveNoButton() {
     ? window.innerHeight
     : diaryPage.getBoundingClientRect().top;
 
-  // Max Y: somewhere above the buttons
   const maxY = Math.max(0, buttonsTop - buttonHeight - safeMargin);
   const maxX = Math.max(0, window.innerWidth - buttonWidth - safeMargin);
 
@@ -56,13 +68,13 @@ noBtn.textContent = funnyTexts[randomIndex];
 // Desktop hover
 noBtn.addEventListener("mouseover", moveNoButton);
 
-// Mobile touchstart (first touch)
+// Mobile touchstart 
 noBtn.addEventListener("touchstart", function (e) {
-  e.preventDefault(); // Prevents the tap from registering as a click
-  setTimeout(moveNoButton, 10); // Delay helps avoid tap-to-click
+  e.preventDefault(); 
+  setTimeout(moveNoButton, 10); 
 });
 
-// Mobile touchmove (if they try to chase it)
+// Mobile touchmove 
 noBtn.addEventListener("touchmove", function (e) {
   e.preventDefault();
   moveNoButton();
